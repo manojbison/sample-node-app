@@ -18,17 +18,6 @@ pipeline {
 
             }
         }
-        stage('build') {
-            steps {
-                habitat task: 'build', directory: '.', origin: "${env.HAB_ORIGIN}"
-            }
-        }
-        stage('upload') {
-            steps {
-                withCredentials([string(credentialsId: 'depot-token', variable: 'HAB_AUTH_TOKEN')]) {
-                    habitat task: 'upload', authToken: env.HAB_AUTH_TOKEN, lastBuildFile: "${workspace}/results/last_build.env", bldrUrl: "${env.HAB_BLDR_URL}"
-                }
-            }
-        }
+
     }
 }
