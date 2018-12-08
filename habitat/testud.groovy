@@ -35,7 +35,7 @@ stage('promote') {
               
               script {
                 env.HAB_PKG = sh ( 
-                     script: "ls -t "{$workspace}"/habitat/results | grep hart | head -n 1",
+                     script: "ls -t ${$workspace}/habitat/results | grep hart | head -n 1",
                      returnStdout: true
                      ).trim()
               }
