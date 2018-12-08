@@ -33,7 +33,7 @@ pipeline {
 stage('promote') {
             steps {             
               withCredentials([string(credentialsId: 'depot-token', variable: 'HAB_AUTH_TOKEN')]) {
-                  habitat task: 'promote', channel: 'stable', authToken: "${env.HAB_AUTH_TOKEN}", artifact: "${workspace}/habitat/results/last_build.ps1", bldrUrl: "${env.HAB_BLDR_URL}"
+                  habitat task: 'promote', channel: 'stable', authToken: "${env.HAB_AUTH_TOKEN}", artifact: "${workspace}/habitat/results/bison-sample-node-app-1.1.0-20181208121348-x86_64-windows.hart", bldrUrl: "${env.HAB_BLDR_URL}"
               }
             }
         }
