@@ -26,7 +26,7 @@ pipeline {
         stage('upload') {
             steps {
                 withCredentials([string(credentialsId: 'depot-token', variable: 'HAB_AUTH_TOKEN')]) {
-                    habitat task: 'upload', authToken: env.HAB_AUTH_TOKEN, lastBuildFile: "C/hab/studios/jenkins--workspace--testud/src/habitat/results/last_build.ps1", bldrUrl: "${env.HAB_BLDR_URL}"
+                    habitat task: 'upload', authToken: env.HAB_AUTH_TOKEN, lastBuildFile: "C:\hab\studios\jenkins--workspace--testud\src\habitat\results\last_build.ps1", bldrUrl: "${env.HAB_BLDR_URL}"
                 }
             }
         }
