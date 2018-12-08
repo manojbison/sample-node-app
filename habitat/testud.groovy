@@ -30,5 +30,12 @@ pipeline {
                 }
             }
         }
+       stage('promote') {
+          steps {
+            withCredentials([string(credentialsId: 'depot-token', variable: 'HAB_AUTH_TOKEN')]) {
+                    habitat task: 'promote', channel: 'stable', directory: "${workspace}/habitat"
+                }
+            }
+        }
     }
 }
