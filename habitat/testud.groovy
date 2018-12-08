@@ -31,17 +31,9 @@ pipeline {
             }
         }
 stage('promote') {
-            steps {
-              
-              script {
-                env.HAB_PKG = sh ( 
-                     script: "ls -t ${$workspace}/habitat/results | grep hart | head -n 1",
-                     returnStdout: true
-                     ).trim()
-              }
-             
+            steps {             
               withCredentials([string(credentialsId: 'depot-token', variable: 'HAB_AUTH_TOKEN')]) {
-                  habitat task: 'promote', channel: 'stable', authToken: "${env.HAB_AUTH_TOKEN}", artifact: "${env.HAB_PKG}", bldrUrl: "${env.HAB_BLDR_URL}"
+                  habitat task: 'promote', channel: 'stable', authToken: "${env.HAB_AUTH_TOKEN}", artifact: "${workspace}/habitat/results/last_build.ps1", bldrUrl: "${env.HAB_BLDR_URL}"
               }
             }
         }
